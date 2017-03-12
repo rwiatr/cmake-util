@@ -27,14 +27,14 @@ ExternalProject_Add(boost
   BUILD_IN_SOURCE 1
   UPDATE_COMMAND ""
   PATCH_COMMAND ""
-  DOWNLOAD_DIR ${CMAKE_SOURCE_DIR}/Libraries/download/boost
-  PREFIX ${CMAKE_SOURCE_DIR}/Libraries/boost
+  DOWNLOAD_DIR ${CMAKE_SOURCE_DIR}/lib/download/boost
+  PREFIX ${CMAKE_SOURCE_DIR}/lib/boost
   CONFIGURE_COMMAND ${Boost_Bootstrap_Command}
   BUILD_COMMAND  ${Boost_b2_Command} install
     --without-python
     --without-mpi
     --disable-icu
-    --prefix=${CMAKE_SOURCE_DIR}/Libraries/boost/src/boost-build
+    --prefix=${CMAKE_SOURCE_DIR}/lib/boost/src/boost-build
     --threading=single,multi
     --link=shared
     --variant=release
@@ -55,8 +55,8 @@ ExternalProject_Add(boost
 add_library(libboost IMPORTED STATIC GLOBAL)
 add_dependencies(libboost boost)
 
-set(Boost_LIBRARY_DIR ${CMAKE_SOURCE_DIR}/Libraries/boost/src/boost-build/lib/ )
-set(Boost_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/Libraries/boost/src/boost-build/include/**/ )
+set(Boost_LIBRARY_DIR ${CMAKE_SOURCE_DIR}/lib/boost/src/boost-build/lib/ )
+set(Boost_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/lib/boost/src/boost-build/include/**/ )
 
 message("Boost_LIBRARY_DIR - ${Boost_LIBRARY_DIR}")
 message("Boost_INCLUDE_DIR - ${Boost_INCLUDE_DIR}")
